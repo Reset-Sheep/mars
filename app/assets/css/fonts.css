@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "zhengkuLight";
+  src: url("~/assets/fonts/zhengkuLight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "zhengkuMedium";
+  src: url("~/assets/fonts/zhengkuMedium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "zhengkuBold";
+  src: url("~/assets/fonts/zhengkuBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "zhengkuHeavy";
+  src: url("~/assets/fonts/zhengkuHeavy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
