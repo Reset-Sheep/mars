@@ -9,18 +9,21 @@
       </div>
       <!-- 菜单 -->
     </div>
+
     <el-affix>
       <div>
         <Menu />
       </div>
     </el-affix>
-    <!-- 剪影 -->
-    <div class="w-full overflow-hidden bg-black">
-      <div class="flex animate-scroll">
-        <img v-for="i in 6" :key="i" src="../assets/img/-logo1-ezgif.com-gif-to-avif-converter (1).avif" alt=""
-          class="h-[15vh] shrink-0" />
-      </div>
+    <div>
+      <img src="../assets/img/huachenyu.png" alt="" class="w-full">
     </div>
+    <!-- <div class="relative flex w-[300px] flex-col items-center justify-center p-8">
+      <iPhone15ProMockup
+        src="https://cdn.inspira-ui.com/images/inspira-ss-phone.png"
+        class="size-full max-w-sm"
+      />
+    </div> -->
     <!-- 第二屏 -->
      <div class="h-[100vh] w-full">
       <div>
@@ -41,13 +44,14 @@
     </div>
     <div class="h-[100vh] overflow-x-hidden"></div>
   </div>
+  
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import Menu from "~/components/Menu/index.vue";
 import Border from "~/components/Border/index.vue"
-import ConcertMap from '~/components/ConcertMap.vue';
+
 </script>
 
 <style scoped lang="scss">

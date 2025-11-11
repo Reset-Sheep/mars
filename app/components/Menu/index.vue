@@ -5,8 +5,14 @@
       :style="{
         borderColor: i.color,
         backgroundColor: hovered === i.subTitle ? i.color : 'transparent'
-      }" @mouseenter="hovered = i.subTitle" @mouseleave="hovered = ''">
-      <div class="flex flex-col items-center justify-center cursor-pointer text-[#fff] menu-item">
+      }"
+      @mouseenter="hovered = i.subTitle"
+      @mouseleave="hovered = ''"
+      @click="hanldeClick(i)"
+    >
+      <div
+        class="flex flex-col items-center justify-center cursor-pointer text-[#fff] menu-item"
+      >
         <div class="text-[30px]" style="font-family: 'zhengkuHeavy'">{{ i.name }}</div>
         <div class="text-[14px]" style="font-family: 'zhengkuMedium'" :style="{
           opacity: hovered === i.subTitle ? '1' : '.35'
@@ -14,11 +20,14 @@
       </div>
     </li>
   </div>
+  <Login v-model="openLogin"></Login>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import Login from "~/components/Login/Index.vue";
 
+const openLogin = ref(false);
 const hovered = ref("");
 
 const menu = [
@@ -28,4 +37,10 @@ const menu = [
   { name: "火星文化", subTitle: "CULTURE", subTitle2: "It's ok!不需要指点我进退", color: "#22bbee" },
   { name: "登录", subTitle: "LOGIN", subTitle2: "摘一片云朵，踏在脚下看日落", color: "#02ff8b" },
 ];
+
+const hanldeClick = (item: any) => {
+  if (item.name === "登录") {
+    openLogin.value = true;
+  }
+};
 </script>
