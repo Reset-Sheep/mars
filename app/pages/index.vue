@@ -29,12 +29,13 @@
     <!-- 第二屏 -->
     <div class="h-[100vh] overflow-x-hidden"></div>
   </div>
+  
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import Menu from "~/components/Menu/index.vue";
-import iPhone15ProMockup from "~/components/ui/iphone-mockup/iPhone15ProMockup.vue";
+
 </script>
 
 <style scoped lang="scss">
