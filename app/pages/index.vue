@@ -11,11 +11,21 @@
       </div>
       <!-- 菜单 -->
     </div>
+
     <el-affix>
       <div>
         <Menu />
       </div>
     </el-affix>
+    <div>
+      <img src="../assets/img/huachenyu.png" alt="" class="w-full">
+    </div>
+    <!-- <div class="relative flex w-[300px] flex-col items-center justify-center p-8">
+      <iPhone15ProMockup
+        src="https://cdn.inspira-ui.com/images/inspira-ss-phone.png"
+        class="size-full max-w-sm"
+      />
+    </div> -->
     <!-- 第二屏 -->
     <div class="h-[100vh] overflow-x-hidden"></div>
   </div>
@@ -24,6 +34,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import Menu from "~/components/Menu/index.vue";
+import iPhone15ProMockup from "~/components/ui/iphone-mockup/iPhone15ProMockup.vue";
 </script>
 
 <style scoped lang="scss">
