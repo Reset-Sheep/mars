@@ -6,7 +6,7 @@
     <div class="screen-first" ref="screenFirst">
       <!-- 第1屏 -->
       <div class="w-[100vw] h-[100vh] overflow-hidden bg-[rgb(134,5,0)]">
-        <div class="w-full h-full bg-[url('@/assets/img/WaveLine.svg')] bg-cover bg-no-repeat">
+        <div class="w-full h-full bg-cover bg-no-repeat">
           <div
             class="w-full h-full bg-[url('@/assets/img/1.png')] bg-[length:auto_100vh] bg-[position:-100px_0] bg-no-repeat"
           >

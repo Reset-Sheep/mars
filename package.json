@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "echarts": "^6.0.0",
     "element-plus": "^2.11.7",
     "nuxt": "^4.2.0",
     "sass": "^1.93.3",
