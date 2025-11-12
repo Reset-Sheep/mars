@@ -10,8 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "echarts": "^6.0.0",
     "@ts-morph/common": "^0.28.1",
+    "echarts": "^6.0.0",
     "element-plus": "^2.11.7",
     "lucide-vue-next": "^0.553.0",
     "motion-v": "^1.7.4",
