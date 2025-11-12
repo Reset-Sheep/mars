@@ -49,8 +49,6 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
-import Menu from "~/components/Menu/index.vue";
-import Border from "~/components/Border/index.vue"
 
 </script>
 

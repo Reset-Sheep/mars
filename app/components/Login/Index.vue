@@ -1,24 +1,74 @@
 <template>
-  <el-dialog v-bind="$attrs" class="login" width="650">
+  <el-dialog v-bind="$attrs" class="login" width="660" align-center destroy-on-close :show-close="false">
     <div class="flex w-[85%] h-full items-center pl-[50px] pt-[30px]">
-      <el-tabs v-model="activeName" class="demo-tabs">
+      <el-tabs v-model="activeName" class="demo-tabs w-[77%]">
         <el-tab-pane label="登录" name="login">
-          <el-form :model="loginForm" label-width="auto" style="max-width: 600px">
+          <el-form :model="loginForm" label-width="auto">
             <el-form-item label="用户名">
-              <el-input v-model="loginForm.userName" />
+              <el-input v-model="loginForm.userName" class="h-[5vh]" />
             </el-form-item>
             <el-form-item label="密码">
-              <el-select
+              <el-input
                 v-model="loginForm.password"
-                placeholder="please select your zone"
-              >
-                <el-option label="Zone one" value="shanghai" />
-                <el-option label="Zone two" value="beijing" />
-              </el-select>
+                class="h-[5vh]"
+                show-password
+              />
+            </el-form-item>
+            <el-form-item>
+              <div class="flex justify-center w-full">
+                <ShimmerButton
+                  class="shadow-2xl"
+                  shimmer-size="2px"
+                  background="#3d7af9"
+                >
+                  <span
+                    style="font-family: 'zhengkuBold'"
+                    class="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white lg:text-lg dark:from-white dark:to-slate-900/10"
+                  >
+                    立即登录
+                  </span>
+                </ShimmerButton>
+              </div>
             </el-form-item>
           </el-form>
         </el-tab-pane>
-        <el-tab-pane label="注册" name="register">Config</el-tab-pane>
+        <el-tab-pane label="注册" name="register">
+          <el-form :model="loginForm" label-width="auto">
+            <el-form-item label="用户名">
+              <el-input v-model="loginForm.userName" class="h-[5vh]" />
+            </el-form-item>
+            <el-form-item label="密码">
+              <el-input
+                v-model="loginForm.password"
+                class="h-[5vh]"
+                show-password
+              />
+            </el-form-item>
+            <el-form-item label="确认密码">
+              <el-input
+                v-model="loginForm.password"
+                class="h-[5vh]"
+                show-password
+              />
+            </el-form-item>
+            <el-form-item>
+              <div class="flex justify-center w-full">
+                <ShimmerButton
+                  class="shadow-2xl"
+                  shimmer-size="2px"
+                  background="#3d7af9"
+                >
+                  <span
+                    style="font-family: 'zhengkuBold'"
+                    class="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white lg:text-lg dark:from-white dark:to-slate-900/10"
+                  >
+                    注册并登录
+                  </span>
+                </ShimmerButton>
+              </div>
+            </el-form-item>
+          </el-form>
+        </el-tab-pane>
       </el-tabs>
       <!-- <div
         style="font-family: 'zhengkuHeavy'"
@@ -32,6 +82,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import ShimmerButton from "~/components/Button/ShimmerButton.vue";
 // const dialogVisible = ref(false);
 
 const activeName = ref("login");
@@ -65,6 +116,30 @@ const loginForm = ref({
       font-family: "zhengkuHeavy";
       font-size: 50px;
       color: #3d7af9;
+    }
+  }
+  .el-tabs__content {
+    // padding-top: 30px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 40vh;
+    .el-tab-pane{
+      width: 100%;
+    }
+  }
+  .el-form-item__label-wrap {
+    margin: auto;
+    label {
+      font-size: 20px;
+      color: #fff;
+      font-family: "zhengkuHeavy";
+    }
+  }
+  .el-input__wrapper {
+    input {
+      font-size: 18px;
+      font-family: "zhengkuMedium";
     }
   }
 }
