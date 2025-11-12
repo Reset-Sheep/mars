@@ -15,22 +15,31 @@
         <Menu />
       </div>
     </el-affix>
-    <div>
-      <img src="../assets/img/huachenyu.png" alt="" class="w-full">
-    </div>
-    <!-- <div class="relative flex w-[300px] flex-col items-center justify-center p-8">
-      <iPhone15ProMockup
-        src="https://cdn.inspira-ui.com/images/inspira-ss-phone.png"
-        class="size-full max-w-sm"
-      />
-    </div> -->
-    <!-- 第二屏 -->
-     <div class="h-[100vh] w-full">
-      <div>
-        <img src="../assets/img/record.png" alt="" class="w-[500px] h-[500px]">
-        <!-- <Border></Border> -->
+    <div class="w-full overflow-hidden bg-black">
+      <div class="flex animate-scroll">
+        <img v-for="i in 6" :key="i" src="../assets/img/-logo1-ezgif.com-gif-to-avif-converter (1).avif" alt=""
+          class="h-[15vh] shrink-0" />
       </div>
-
+    </div>
+    <!-- 第二屏 -->
+    <div class="h-[100vh] w-full relative">
+      <div>
+        <div class="huachenyu-text text-[#ff8331] text-[3.5vw]">【2016】MAMA(Mnet亚洲音乐大奖)亚洲最佳艺人（中国）</div>
+        <div class="huachenyu-text text-[#fff] text-[2.7vw] top-[80px] right-[20px]">【2018】首位在鸟巢连开两场演唱会的90后歌手</div>
+        <div class="huachenyu-text text-[#fff] text-[2.4vw] top-[80px]">【2020】《歌手·当打之年》歌王</div>
+        <div class="huachenyu-text text-[#fff] text-[2.6vw] top-[150px]">【2021】火星演唱会总导演</div>
+        <div class="huachenyu-text text-[#ff8331] text-[3.7vw] top-[150px] right-[20px]">【2024】举办万人海边日出演唱会</div>
+        <div class="huachenyu-text text-[#ff8331] text-[2.7vw] top-[230px]">【2014】首登央视春晚舞台</div>
+        <div class="huachenyu-text text-[#ff8331] text-[2.5vw] top-[300px] w-[26vw]">【2016】亚洲新歌榜最佳男歌手奖</div>
+      </div>
+      <div>
+        <img src="../assets/img/huachenyu.png" alt="" class="w-full">
+      </div>
+    </div>
+    <!-- 第三屏 -->
+     <div class="flex items-center justify-center">
+      <div class="bg-[url('@/assets/img/writingbg.png')] w-[70vw] h-[60vh] bg-cover">
+      </div>
      </div>
     <div>
       <client-only>
@@ -44,7 +53,7 @@
     </div>
     <div class="h-[100vh] overflow-x-hidden"></div>
   </div>
-  
+
 </template>
 
 <script setup lang="ts">
@@ -74,5 +83,10 @@ import Border from "~/components/Border/index.vue"
   width: 200%;
   /* 两倍宽度实现无缝衔接 */
   animation: scroll 60s linear infinite;
+}
+
+.huachenyu-text {
+  font-family: 'zhengkuMedium';
+  position: absolute;
 }
 </style>
