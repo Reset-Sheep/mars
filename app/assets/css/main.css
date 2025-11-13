@@ -1,5 +1,5 @@
 @tailwind base;
-
+@import "@nuxt/ui";
 @plugin "tailwindcss-animate";
 @tailwind components;
 @tailwind utilities;
