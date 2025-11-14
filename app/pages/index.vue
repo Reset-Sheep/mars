@@ -22,7 +22,7 @@
       </div>
     </div>
     <!-- 第二屏 -->
-    <div class="h-[100vh] w-full relative">
+    <div class="h-[85vh] w-full relative">
       <div>
         <div class="huachenyu-text text-[#ff8331] text-[3.5vw]">【2016】MAMA(Mnet亚洲音乐大奖)亚洲最佳艺人（中国）</div>
         <div class="huachenyu-text text-[#fff] text-[2.7vw] top-[80px] right-[20px]">【2018】首位在鸟巢连开两场演唱会的90后歌手</div>
@@ -37,20 +37,17 @@
       </div>
     </div>
     <!-- 第三屏 -->
-     <div class="flex items-center justify-center">
-      <div class="bg-[url('@/assets/img/writingbg.png')] w-[70vw] h-[60vh] bg-cover">
-      </div>
-     </div>
+     <!-- <div class="flex items-center justify-center">
+      <div class="w-[20vw] aspect-[.76] bg-[url('@/assets/img/cover.png')] bg-cover"></div>
+     </div> -->
+     <div><Picture/></div>
     <div>
       <client-only>
         <ConcertMap />
       </client-only>
     </div>
-    <div class="h-[100vh] overflow-x-hidden bg-[url('@/assets/img/bg2.png')] bg-no-repeat bg-cover">
-      <div>
-        <!-- <Border></Border> -->
-      </div>
-    </div>
+    
+    <!-- <div class="translate-y-[-50%]"><img src="../assets/img/—Pngtree—ripped paper edge element set_8988019.png" alt="" class="w-full"></div> -->
     <div class="h-[100vh] overflow-x-hidden"></div>
   </div>
 
