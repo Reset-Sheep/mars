@@ -27,6 +27,7 @@
 const menu = [
   { index: "/community/chat", title: "聊天大厅" },
   { index: "/community/nearby", title: "附近煤球" },
+  { index: "/community/tieba", title: "煤球贴吧" },
 ];
 </script>
 

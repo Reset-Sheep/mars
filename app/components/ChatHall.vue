@@ -92,7 +92,6 @@ function sendMessage() {
 <style lang="scss">
 .chat-hall {
   width: 100%;
-  height: 80vh;
   display: flex;
   flex-direction: column;
   &.el-card {
@@ -122,6 +121,7 @@ function sendMessage() {
   display: flex;
   align-items: flex-start;
   margin: 10px 0;
+  gap: 10px;
 }
 
 .message-item.self {
