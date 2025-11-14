@@ -25,14 +25,13 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Login from "~/components/Login/Index.vue";
 
 const openLogin = ref(false);
 const hovered = ref("");
 
 const menu = [
-  { name: "首页", subTitle: "HOME", subTitle2: "想过离开，以这种方式存在", color: "#ffcc30" },
-  { name: "黑煤球社区", subTitle: "VILLAGE", subTitle2: "戴上礼帽，可笑，看谁露出马脚", color: "#ff8331" },
+  { name: "首页", subTitle: "HOME", subTitle2: "想过离开，以这种方式存在", color: "#ffcc30",path:"/" },
+  { name: "黑煤球社区", subTitle: "VILLAGE", subTitle2: "戴上礼帽，可笑，看谁露出马脚", color: "#ff8331",path:"/community/tieba" },
   { name: "活动", subTitle: "ACTIVITY", subTitle2: "他是我奢侈的愿望，也是我抹杀的童话", color: "#3d7af9" },
   { name: "小游戏", subTitle: "CULTURE", subTitle2: "It's ok!不需要指点我进退", color: "#22bbee",path:"/games" },
   { name: "登录", subTitle: "LOGIN", subTitle2: "摘一片云朵，踏在脚下看日落", color: "#02ff8b" },

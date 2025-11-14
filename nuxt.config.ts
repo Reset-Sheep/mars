@@ -6,5 +6,9 @@ export default defineNuxtConfig({
     "@/assets/css/fonts.css",
     "@/assets/css/main.css",
   ],
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  runtimeConfig: {
+    // public
+  }
+    
 })

@@ -1,5 +1,12 @@
 <template>
-  <el-dialog v-bind="$attrs" class="login" width="660" align-center destroy-on-close :show-close="false">
+  <el-dialog
+    v-bind="$attrs"
+    class="login"
+    width="660"
+    align-center
+    destroy-on-close
+    :show-close="false"
+  >
     <div class="flex w-[85%] h-full items-center pl-[50px] pt-[30px]">
       <el-tabs v-model="activeName" class="demo-tabs w-[77%]">
         <el-tab-pane label="登录" name="login">
@@ -57,6 +64,7 @@
                   class="shadow-2xl"
                   shimmer-size="2px"
                   background="#3d7af9"
+                  @click="handleRegister"
                 >
                   <span
                     style="font-family: 'zhengkuBold'"
@@ -68,6 +76,20 @@
               </div>
             </el-form-item>
           </el-form>
+          <div class="mt-[30px] ml-[45px]">
+            亲耐滴黑煤球们：
+            <ul>
+              <li>请授予网站地理位置权限，以便提供附近煤球功能；</li>
+              <li>为保证黑煤球们的信息安全，网站不会强制收集任何用户信息；</li>
+              <li>相信各位黑煤球们不会恶意注册吧~</li>
+              <li>
+                注册后将获得闪卡一张哦~
+                <span class="text-[#3d7af9] cursor-pointer" @click="card = true"
+                  >查看闪卡样式</span
+                >
+              </li>
+            </ul>
+          </div>
         </el-tab-pane>
       </el-tabs>
       <!-- <div
@@ -77,14 +99,50 @@
         登录
       </div> -->
     </div>
+    <el-dialog
+      v-model="card"
+      width="300"
+      align-center
+      destroy-on-close
+      :show-close="false"
+    >
+      <div class="text-[#fff] text-[20px]" style="font-family: 'zhengkuMedium'">
+        悬浮有惊喜
+      </div>
+      <div class="flex items-center justify-center">
+        <GlareCard class="flex flex-col items-center justify-center">
+          <img src="../../assets/img/card/1.png" />
+        </GlareCard>
+      </div>
+    </el-dialog>
   </el-dialog>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
 import ShimmerButton from "~/components/Button/ShimmerButton.vue";
-// const dialogVisible = ref(false);
 
+const { $pb } = useNuxtApp();
+
+const handleRegister = async () => {
+  console.log("PocketBase client URL:", $pb.baseUrl);
+  console.log("PocketBase fetch impl:", $pb.send);
+
+  try {
+    const user = await $pb.collection("users").create({
+      username: "test22",
+      email: "test21111@xxx.com",
+      password: "12345678",
+      passwordConfirm: "12345678",
+    });
+    console.log("注册成功：", JSON.stringify(user));
+  } catch (err) {
+    console.error("注册失败：", err);
+  }
+};
+
+// const dialogVisible = ref(false);
+const card = ref(false);
 const activeName = ref("login");
 
 const loginForm = ref({
@@ -123,8 +181,8 @@ const loginForm = ref({
     display: flex;
     justify-items: center;
     align-items: center;
-    height: 40vh;
-    .el-tab-pane{
+    height: 50vh;
+    .el-tab-pane {
       width: 100%;
     }
   }
