@@ -29,7 +29,7 @@
       </div>
     </div>
     <!-- 第二屏 -->
-    <div class="h-[100vh] w-full relative">
+    <div class="h-[85vh] w-full relative">
       <div>
         <div class="huachenyu-text text-[#ff8331] text-[3.5vw]">
           【2016】MAMA(Mnet亚洲音乐大奖)亚洲最佳艺人（中国）
@@ -64,11 +64,17 @@
       </div>
     </div>
     <!-- 第三屏 -->
+     <!-- <div class="flex items-center justify-center">
+      <div class="w-[20vw] aspect-[.76] bg-[url('@/assets/img/cover.png')] bg-cover"></div>
+     </div> -->
+     <div><Picture/></div>
     <div>
       <client-only>
         <ConcertMap />
       </client-only>
     </div>
+    
+    <!-- <div class="translate-y-[-50%]"><img src="../assets/img/—Pngtree—ripped paper edge element set_8988019.png" alt="" class="w-full"></div> -->
     <ClientOnly>
       <div
         class="relative w-full overflow-hidden rounded-lg"
