@@ -7,6 +7,18 @@ export default defineNuxtConfig({
     "@/assets/css/main.css",
   ],
   devtools: { enabled: true },
+  vite: {
+    //代理
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8090',
+          changeOrigin: true,
+          // rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
+    },
+  },
   runtimeConfig: {
     // public
   }

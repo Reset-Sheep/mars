@@ -15,12 +15,12 @@
             v-for="(msg, index) in messages"
             :key="index"
             class="message-item"
-            :class="{ self: msg.userId === currentUserId }"
+            :class="{ self: msg.sender === currentUserId }"
           >
-            <el-avatar :size="36" :src="msg.avatar" />
+            <el-avatar :size="36" :src="$pb.files.getUrl(msg.expand.sender, msg.expand.sender.avatar)" />
             <div class="content">
-              <div class="nickname">{{ msg.name }}</div>
-              <div class="bubble">{{ msg.text }}</div>
+              <div class="nickname">{{ msg.expand.sender.name }}</div>
+              <div class="bubble">{{ msg.content }}</div>
             </div>
           </div>
         </el-scrollbar>
