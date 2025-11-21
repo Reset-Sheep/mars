@@ -1,16 +1,16 @@
 <template>
   <el-card class="chat-hall">
     <!-- 顶部标题栏 -->
-    <div class="chat-header">
+    <!-- <div class="chat-header">
       <div class="online text-[#02ff8b]" v-if="onlineCount !== null">
         在线人数：{{ onlineCount }}
       </div>
-    </div>
+    </div> -->
 
     <!-- 聊天内容 -->
-    <div class="bg-[#242424] rounded-[20px] p-[20px]">
+    <div class="bg-[#242424] rounded-[20px] py-[20px]">
       <div class="message-area relative">
-        <el-scrollbar ref="messageScroll" always>
+        <el-scrollbar ref="messageScroll" class=" px-[20px]" always>
           <div
             v-for="(msg, index) in messages"
             :key="index"
@@ -66,6 +66,16 @@ function sendMessage() {
   });
 }
 
+watch(
+  () => props.messages,
+  () => {
+    nextTick(() => {
+      // 自动滚动到底部
+      messageScroll.value?.setScrollTop(Number.MAX_SAFE_INTEGER);
+    });
+  },
+);
+
 // onMounted(() => {
 //     if (navigator.geolocation) {
 //   navigator.geolocation.getCurrentPosition(
@@ -111,7 +121,7 @@ function sendMessage() {
 
 .message-area {
   flex: 1;
-  height: 60vh;
+  height: 65vh;
   overflow: hidden;
   padding: 12px 0;
   border-radius: 20px;
@@ -157,7 +167,7 @@ function sendMessage() {
 .chat-input {
   display: flex;
   gap: 8px;
-  padding: 8px;
+  padding: 8px 20px;
   align-items: center;
 }
 </style>

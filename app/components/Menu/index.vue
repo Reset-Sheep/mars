@@ -19,7 +19,7 @@
           <div v-else class="text-[20px]" style="font-family: 'zhengkuHeavy'">
             <div class="flex items-center gap-[10px]">
               <el-image :src="avatarUrl" alt="" fit="cover" class="rounded-[50%] w-[35px] aspect-[1]"></el-image>
-              <span class="text-[30px]">{{ $pb.authStore.model.name }}</span>
+              <span class="text-[30px]">{{ $pb?.authStore?.model?.name }}</span>
             </div>
           </div>
         </div>
@@ -65,6 +65,10 @@ const menu = [
 
 const hanldeClick = (item: any) => {
   if (item.name === "登录") {
+    if (!showLoginButton.value) {
+      navigateTo("/personal");
+      return;
+    }
     openLogin.value = true;
     return;
   }

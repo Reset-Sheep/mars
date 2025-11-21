@@ -42,8 +42,8 @@
         </el-tab-pane>
         <el-tab-pane label="注册" name="register">
           <el-form :model="loginForm" label-width="auto">
-            <el-form-item label="用户名">
-              <el-input v-model="loginForm.userName" class="h-[5vh]" />
+            <el-form-item label="邮箱">
+              <el-input v-model="loginForm.email" class="h-[5vh]" />
             </el-form-item>
             <el-form-item label="密码">
               <el-input

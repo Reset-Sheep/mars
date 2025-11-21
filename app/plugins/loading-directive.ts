@@ -4,7 +4,7 @@ import type { DirectiveBinding } from 'vue'
 import LoadingOverlay from '~/components/LoadingOverlay.vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.directive('loading', {
+  nuxtApp.vueApp.directive('my-loading', {
     mounted(el: HTMLElement, binding: DirectiveBinding) {
       // 创建挂载容器
       const overlayApp = createApp(LoadingOverlay, { visible: binding.value })
