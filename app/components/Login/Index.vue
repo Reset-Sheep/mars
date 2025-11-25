@@ -12,9 +12,16 @@
             </el-form-item>
             <el-form-item>
               <div class="flex justify-center w-full">
-                <ShimmerButton class="shadow-2xl" shimmer-size="2px" background="#3d7af9">
-                  <span style="font-family: 'zhengkuBold'"
-                    class="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white lg:text-lg dark:from-white dark:to-slate-900/10">
+                <ShimmerButton
+                  class="shadow-2xl"
+                  shimmer-size="2px"
+                  background="#3d7af9"
+                  @click="handleLogin"
+                >
+                  <span
+                    style="font-family: 'zhengkuBold'"
+                    class="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white lg:text-lg dark:from-white dark:to-slate-900/10"
+                  >
                     立即登录
                   </span>
                 </ShimmerButton>
@@ -24,8 +31,8 @@
         </el-tab-pane>
         <el-tab-pane label="注册" name="register">
           <el-form :model="loginForm" label-width="auto">
-            <el-form-item label="用户名">
-              <el-input v-model="registerForm.email" class="h-[5vh]" />
+            <el-form-item label="邮箱">
+              <el-input v-model="loginForm.email" class="h-[5vh]" />
             </el-form-item>
             <el-form-item label="密码">
               <el-input v-model="registerForm.password" class="h-[5vh]" show-password />
@@ -47,7 +54,7 @@
           <div class="mt-[30px] ml-[45px]">
             亲耐滴黑煤球们：
             <ul>
-              <li>请授予网站地理位置权限，以便提供附近煤球功能；</li>
+              <!-- <li>请授予网站地理位置权限，以便提供附近煤球功能；</li> -->
               <li>为保证黑煤球们的信息安全，网站不会强制收集任何用户信息；</li>
               <li>相信各位黑煤球们不会恶意注册吧~</li>
               <li>
@@ -79,9 +86,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import ShimmerButton from "~/components/Button/ShimmerButton.vue";
-
+import Avatar from "~/assets/img/Snipaste_2025-11-17_09-54-03.png";
 const { $pb } = useNuxtApp();
 
 const handleRegister = async () => {
@@ -118,6 +125,29 @@ const registerForm = ref({
   password: "",
   passwordConfirm: "",
 });
+
+const handleLogin = async () => {
+  try {
+    console.log("👉 handleLogin start");
+    console.log("loginForm.value:", loginForm.value);
+
+    const identity = loginForm.value.email;
+    const password = loginForm.value.password;
+
+    console.log("准备登录 identity=", identity, " password=", password);
+
+    const user = await $pb
+      .collection("users")
+      .authWithPassword(identity, password);
+
+    console.log("登录成功：", user);
+  } catch (err) {
+    console.error("登录报错：", err);
+  }
+};
+
+
+
 </script>
 
 <style lang="scss">

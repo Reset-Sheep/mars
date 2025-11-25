@@ -1,18 +1,14 @@
-import PocketBase from 'pocketbase'
-// 在任意组件这样使用
-// const { $pb } = useNuxtApp()
-
-// PocketBase 服务器如何获取
-// 运行 ./pocketbase serve --http="0.0.0.0:8090"
+// plugins/pocketbase.client.ts
+import PocketBase from "pocketbase";
 
 export default defineNuxtPlugin(() => {
-  const pb = new PocketBase('http://localhost:8090')
-  // 自动保存 cookie（保持登录态）
-  pb.autoCancellation(false)
+  // 用你能在浏览器访问的地址（用 IP 而不是 0.0.0.0）
+  const pb = new PocketBase("http://localhost:8090");
 
+  // 把实例注入 Nuxt
   return {
     provide: {
       pb
     }
-  }
-})
+  };
+});

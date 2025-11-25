@@ -6,30 +6,32 @@
       </div>
     </el-affix>
     <div class="common-layout w-full h-full">
-      <el-container class="h-full">
-        <el-aside width="200px" class="h-full">
-          <el-menu :default-active="$route.path" router>
-            <el-menu-item v-for="i in menu" :key="i.index" :index="i.index">
-              <span>{{ i.title }}</span>
-            </el-menu-item>
-          </el-menu>
-        </el-aside>
-        <el-main>
-          <!-- 这里会动态渲染子页面 -->
-          <NuxtPage />
-        </el-main>
-      </el-container>
+      <div class="relative flex h-full flex-col items-center justify-center">
+        <FallingStarsBg class="bg-black dark:bg-black" color="#FFF" />
+        <div class="w-full h-full flex justify-center z-[1]">
+          <div class="w-[70vw] h-[83vh]">
+            <el-scrollbar class="w-full !z-[100]">
+              <div class="flex justify-center pt-[10px] pb-[20px]">
+                <MorphingTabs
+                  :tabs="tabs"
+                  :active-tab="activeTab"
+                  @update:active-tab="activeTab = $event"
+                />
+              </div>
+              <NuxtPage />
+            </el-scrollbar>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const menu = [
-  { index: "/community/chat", title: "聊天大厅" },
-  { index: "/community/nearby", title: "附近煤球" },
-  { index: "/community/all", title: "煤球雷达" },
-  { index: "/community/tieba", title: "煤球贴吧" },
-];
+import { ref } from "vue";
+
+const tabs = ["主页", "帖子", "卡片", "认证", "三句小说"];
+const activeTab = ref(tabs[0]);
 </script>
 
 <style lang="scss">
