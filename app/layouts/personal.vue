@@ -68,34 +68,32 @@ const handleClick = (tab: any) => {
     }
   });
 };
-console.log(route.fullPath.split("/")[3]);
-watch(
-  () => route.params?.id,
-  () => {
-    const id = route.params?.id;
-    if (!id) return;
-    if ($pb?.authStore?.model?.id != id) {
-      tabs.value = tabs.value.slice(0, 1);
-    }
-    if (route.fullPath.split("/")[3]&&tabs.value.find((item) => item.value === route.fullPath.split("/")[3])) {
-      activeTab.value = tabs.value.find((item) => item.value === route.fullPath.split("/")[3])?.label;
-    }else{
-      tabs.value = tabs.value.slice(0, 1);
-    }
-  }
-);
 
-onMounted(() => {
-  if (
-    route.fullPath.split("/")[3] &&
-    tabs.value.find((item) => item.value === route.fullPath.split("/")[3])
-  ) {
+function init() {
+  const id = route.params?.id;
+  if (!id) return;
+  console.log($pb?.authStore?.model?.id != id);
+  if ($pb?.authStore?.model?.id != id) {
+    tabs.value = tabs.value.slice(0, 1);
+  }
+  if (route.fullPath.split("/")[3]) {
     activeTab.value = tabs.value.find(
       (item) => item.value === route.fullPath.split("/")[3]
     )?.label;
   } else {
-    tabs.value = tabs.value.slice(0, 1);
+    
+    activeTab.value = tabs.value[0].label;
   }
+}
+watch(
+  () => route.params?.id,
+  () => {
+    init();
+  }
+);
+
+onMounted(() => {
+  init();
 });
 </script>
 
