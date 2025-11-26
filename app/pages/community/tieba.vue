@@ -62,7 +62,7 @@
       <a-modal v-model:open="open" centered :footer="null" width="60%">
         <template #title>
           <div class="flex items-center gap-2">
-            <div class="flex gap-[10px] items-center">
+            <div class="flex gap-[10px] items-center cursor-pointer" @click="handleClick(postDetail.expand.author?.id)">
               <el-image
                 alt=""
                 :src="
@@ -289,6 +289,9 @@ const getInfoPosts = async (i: any) => {
   open.value = true;
 };
 
+const handleClick = (id: any) => {
+  navigateTo(`/personal/${id}`);
+}
 onMounted(() => {
   loadAllComments();
 });

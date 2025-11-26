@@ -11,6 +11,7 @@
           v-for="(i, index) in userList"
           :key="index"
           class="p-[10px] nearby-item h-max"
+          @click="hanldeClick(i)"
         >
           <div class="flex items-center gap-[10px] justify-between w-full">
             <div class="flex-1">
@@ -107,6 +108,10 @@ function getIp() {
     });
   });
 }
+
+const hanldeClick = (i: any) => {
+  navigateTo(`/personal/${i.id}`);
+};
 
 onMounted(async () => {
   await getIp();

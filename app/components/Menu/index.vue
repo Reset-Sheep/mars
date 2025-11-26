@@ -66,7 +66,7 @@ const menu = [
 const hanldeClick = (item: any) => {
   if (item.name === "登录") {
     if (!showLoginButton.value) {
-      navigateTo("/personal");
+      navigateTo("/personal/"+$pb?.authStore?.model?.id);
       return;
     }
     openLogin.value = true;

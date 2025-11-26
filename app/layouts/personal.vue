@@ -9,17 +9,17 @@
       <div class="relative flex h-full flex-col items-center justify-center">
         <FallingStarsBg class="bg-black dark:bg-black" color="#FFF" />
         <div class="w-full h-full flex justify-center z-[1]">
-          <div class="w-[70vw] h-[83vh]">
-            <el-scrollbar class="w-full !z-[100]">
-              <div class="flex justify-center pt-[10px] pb-[20px]">
-                <MorphingTabs
-                  :tabs="tabs"
-                  :active-tab="activeTab"
-                  @update:active-tab="activeTab = $event"
-                />
-              </div>
-              <NuxtPage />
-            </el-scrollbar>
+          <div class="w-[67vw]">
+            <!-- <el-scrollbar class="w-full !z-[100]"> -->
+            <div class="flex justify-center pt-[10px] pb-[20px]">
+              <MorphingTabs
+                :tabs="tabs.map((item) => item.label)"
+                :active-tab="activeTab"
+                @update:active-tab="handleClick"
+              />
+            </div>
+            <NuxtPage />
+            <!-- </el-scrollbar> -->
           </div>
         </div>
       </div>
@@ -29,9 +29,74 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+const route = useRoute();
+const tabs = ref([
+  {
+    label: "主页",
+    value: "主页",
+    path: "/personal/" + route.params?.id,
+  },
+  {
+    label: "帖子",
+    value: "tieba",
+    path: "/personal/" + route.params?.id + "/tieba",
+  },
+  {
+    label: "卡片",
+    value: "card",
+    path: "/personal/" + route.params?.id + "/card",
+  },
+  {
+    label: "认证",
+    value: "auth",
+    path: "/personal/" + route.params?.id + "/auth",
+  },
+  {
+    label: "三句小说",
+    value: "novel",
+    path: "/personal/" + route.params?.id + "/novel",
+  },
+]);
+const activeTab = ref(tabs.value[0].label);
+const { $pb } = useNuxtApp();
 
-const tabs = ["主页", "帖子", "卡片", "认证", "三句小说"];
-const activeTab = ref(tabs[0]);
+const handleClick = (tab: any) => {
+  activeTab.value = tab;
+  tabs.value.forEach((item) => {
+    if (item.label === tab) {
+      navigateTo(item.path);
+    }
+  });
+};
+console.log(route.fullPath.split("/")[3]);
+watch(
+  () => route.params?.id,
+  () => {
+    const id = route.params?.id;
+    if (!id) return;
+    if ($pb?.authStore?.model?.id != id) {
+      tabs.value = tabs.value.slice(0, 1);
+    }
+    if (route.fullPath.split("/")[3]&&tabs.value.find((item) => item.value === route.fullPath.split("/")[3])) {
+      activeTab.value = tabs.value.find((item) => item.value === route.fullPath.split("/")[3])?.label;
+    }else{
+      tabs.value = tabs.value.slice(0, 1);
+    }
+  }
+);
+
+onMounted(() => {
+  if (
+    route.fullPath.split("/")[3] &&
+    tabs.value.find((item) => item.value === route.fullPath.split("/")[3])
+  ) {
+    activeTab.value = tabs.value.find(
+      (item) => item.value === route.fullPath.split("/")[3]
+    )?.label;
+  } else {
+    tabs.value = tabs.value.slice(0, 1);
+  }
+});
 </script>
 
 <style lang="scss">
