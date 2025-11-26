@@ -27,7 +27,7 @@
                     v-if="userInfo?.avatar"
                     :src="$pb.files.getUrl(userInfo, userInfo.avatar)"
                     alt="avatar"
-                    class="w-[4vw] aspect-[1] rounded-[50%] mt-[5px] ml-[3px]"
+                    class="w-[4vw] aspect-[1] rounded-[50%] mt-[5px]"
                   />
                   <div
                     class="absolute top-[0] left-[0] bg-[url('@/assets/img/person/avatar.png')] bg-no-repeat bg-cover w-full aspect-[1] rounded-[50%]"
@@ -77,7 +77,7 @@ import Img3 from "~/assets/img/person/图片3.avif";
 import Img4 from "~/assets/img/person/图片4.avif";
 const { $pb } = useNuxtApp();
 // 轮播图片数组
-const images = [Img2, Img3, Img4];
+const images = [Img3, Img2, Img4];
 
 const route = useRoute();
 

@@ -40,15 +40,26 @@ const { $pb } = useNuxtApp();
 const showLoginButton = ref(true);
 //头像拼接
 const avatarUrl = ref('');
-
+const user = $pb.authStore?.model;
 onMounted(() => {
-  const user = $pb.authStore.model;
+  
   if (user&&user.id) {
     showLoginButton.value = false;
+    console.log(user);
+    
     avatarUrl.value =  $pb.files.getUrl(user, user.avatar)
   }
   // console.log("当前 Token：", $pb.authStore.token);
 });
+
+watch(()=>user,()=>{
+  if (user&&user.id) {
+    showLoginButton.value = false;
+    console.log(user);
+    
+    avatarUrl.value =  $pb.files.getUrl(user, user.avatar)
+  }
+})
 
 
 
