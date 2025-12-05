@@ -1,11 +1,11 @@
 <template>
   <div
+    
     class="relative flex w-full h-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background md:shadow-xl"
   >
-    <el-scrollbar class="w-full !z-[100]" :height="`calc(90vh - 70px)`">
+    <el-scrollbar class="w-full !z-[100]" :height="`calc(90vh - 70px)`" v-my-loading="loading">
       <div
-        class="text-[#fff] w-full grid grid-cols-6 gap-4"
-        v-my-loading="loading"
+        class="text-[#fff] w-full h-full grid grid-cols-6 gap-4"
       >
         <div
           v-for="(i, index) in userList"
@@ -74,6 +74,7 @@ const userList = ref<any>([]);
 async function getNearbyUsers(lat: any, lon: any) {
   const radius = 10000; // 10km
   const users = await $pb.collection("users").getFullList({
+    // fields: "id,location,name,avatar",
     filter: `geoDistance(location.lon, location.lat, ${lon}, ${lat}) < ${radius} && id != "${$pb.authStore.model.id}"`,
   });
   userList.value = users

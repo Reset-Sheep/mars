@@ -1,27 +1,46 @@
 <template>
-  <div class="w-full bg-[url('@/assets/img/background.png')] bg-no-repeat bg-cover pt-[100px] pb-[100px]">
+  <div
+    class="w-full bg-[url('@/assets/img/background.png')] bg-no-repeat bg-cover pt-[50px] pb-[100px]"
+  >
     <div class="w-full flex justify-center">
       <img src="@/assets/img/title1.png" alt="" class="h-[180px]" />
     </div>
     <div class="flex w-full">
       <div ref="chartRef" class="w-full h-[600px] flex-1"></div>
       <div class="flex-1 flex flex-col justify-center">
-        <div class="text-[#fff] text-[20px] my-[10px]" style="font-family: 'zhengkuMedium'">
+        <div
+          class="text-[#fff] text-[20px] my-[10px]"
+          style="font-family: 'zhengkuMedium'"
+        >
           一只黑煤球提醒您：点击左边地点，查看演唱会卡片；点击下方卡片，了解更多哟~
         </div>
         <div class="radio grid grid-cols-3 gap-[10px] w-[40vw]">
-          <div style="font-family: 'zhengkuMedium'"
-            class="text-[#fff] text-[100px] w-[235px] leading-[120px] text-center">
+          <div
+            style="font-family: 'zhengkuMedium'"
+            class="text-[#fff] text-[100px] w-[235px] leading-[120px] text-center"
+          >
             {{ selectConcerts.city }}
           </div>
-          <div class="w-max p-3 border-[5px] border-solid border-[transparent] rounded-[12px] cursor-pointer"
-            :class="activeIndex === index ? 'active' : ''" v-for="(i, index) in selectConcerts.date" :key="i"
-            @click="handleClick(index)">
-            <div class="bg-[url(@/assets/img/radio/b3.png)] w-[200px] aspect-[2.14] bg-cover relative">
-              <div class="absolute right-[32px] top-[3px] text-[18px]" style="font-family: 'zhengkuMedium'">
+          <div
+            class="w-max p-3 border-[5px] border-solid border-[transparent] rounded-[12px] cursor-pointer"
+            :class="activeIndex === index ? 'active' : ''"
+            v-for="(i, index) in selectConcerts.date"
+            :key="i"
+            @click="handleClick(index)"
+          >
+            <div
+              class="bg-[url(@/assets/img/radio/b3.png)] w-[200px] aspect-[2.14] bg-cover relative"
+            >
+              <div
+                class="absolute right-[32px] top-[3px] text-[18px]"
+                style="font-family: 'zhengkuMedium'"
+              >
                 {{ i.venue }}
               </div>
-              <div class="absolute bottom-[8px] left-[7px] text-[30px]" style="font-family: 'zhengkuBold'">
+              <div
+                class="absolute bottom-[8px] left-[7px] text-[30px]"
+                style="font-family: 'zhengkuBold'"
+              >
                 {{ i.time }}
               </div>
             </div>
@@ -29,6 +48,32 @@
         </div>
       </div>
     </div>
+    <a-modal
+      v-model:open="open"
+      :footer="null"
+      :title="`${selectConcerts?.city}站`"
+      width="45vw"
+      @cancel="handleClose"
+      class="concert-map"
+      :closable="false"
+    >
+      <div class="h-[50vh] px-[11vw]">
+        <!-- {{ selectConcerts }} -->
+        <!-- {{ selectConcerts.date[activeIndex] }} -->
+        <a-form
+          :label-col="{ span: 3 }"
+          :wrapper-col="{ span: 16 }"
+          layout="vertical"
+        >
+          <a-form-item label="时间" name="username">
+            {{ selectConcerts.date[activeIndex]?.time }}
+          </a-form-item>
+          <a-form-item label="地点" name="username">
+            {{ selectConcerts.date[activeIndex]?.venue }}
+          </a-form-item>
+        </a-form>
+      </div>
+    </a-modal>
   </div>
 </template>
 
@@ -40,7 +85,7 @@ import { GeoComponent, TooltipComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 import chinaJson from "@/assets/map/china.json"; // ✅ 需要中国地图JSON文件
 import concerts from "@/assets/json/concerts.json";
-
+const open = ref(false);
 // 注册ECharts组件
 echarts.use([
   MapChart,
@@ -178,6 +223,12 @@ onBeforeUnmount(() => {
 const activeIndex = ref(null);
 const handleClick = (index) => {
   activeIndex.value = index; // 更新选中项
+  open.value = true;
+};
+
+const handleClose = () => {
+  activeIndex.value = null;
+  open.value = false;
 };
 </script>
 
@@ -187,6 +238,22 @@ const handleClick = (index) => {
   .active {
     background-color: rgba($color: #fff, $alpha: 0.6);
     border-color: rgb(0, 95, 235);
+  }
+}
+
+.concert-map {
+  .ant-modal-content {
+    background-color: transparent;
+    background: url('@/assets/img/bg.png') no-repeat;
+    background-size: 100% 100%;
+    .ant-modal-header{
+      background-color: transparent;
+      .ant-modal-title{
+        padding-left: 11vw;
+        padding-top: 10px;
+        color: #fff;
+      }
+    }
   }
 }
 </style>
